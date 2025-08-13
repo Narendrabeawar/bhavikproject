@@ -178,57 +178,112 @@ export function ContactDetailModal({ isOpen, onCloseAction, contactName, forceNo
                 </div>
               </TabsContent>
               <TabsContent value="whatsapp" className="mt-6">
-                <div className="space-y-6">
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="flex items-start space-x-3">
-                        <Avatar className="h-8 w-8 mt-1">
-                          <AvatarImage src="/professional-man.png" />
-                          <AvatarFallback>HC</AvatarFallback>
-                        </Avatar>
-                        <div className="flex-1 space-y-2">
-                          <div className="flex items-center space-x-2">
-                            <span className="text-green-600 font-medium">@Hitesh Chaudhary</span>
-                            <span className="text-gray-600 text-sm">sent a WhatsApp message</span>
-                            <ExternalLink className="h-3 w-3 text-gray-400" />
-                          </div>
-                          <div className="bg-green-50 rounded-lg p-3">
-                            <h4 className="font-medium text-gray-900 mb-2">WhatsApp Demo Message</h4>
-                            <p className="text-sm text-gray-600 leading-relaxed">Hi, this is a WhatsApp demo message for Tara Shareef. Please review the contract and let me know your thoughts.</p>
-                          </div>
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs text-gray-500">2 mins ago</span>
-                            <ChevronRight className="h-4 w-4 text-gray-400" />
-                          </div>
-                        </div>
+                <div className="w-full max-w-lg mx-auto">
+                  <div className="rounded-xl p-4 min-h-[320px] flex flex-col gap-2 shadow border border-gray-200 overflow-y-auto max-h-[400px]" style={{ backgroundImage: "url('/whatsapp.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                    {/* Chat bubbles */}
+                    {/* Sender (left) */}
+                    <div className="flex items-end mb-2">
+                      <Avatar className="h-7 w-7 mr-2">
+                        <AvatarImage src="/professional-man.png" />
+                        <AvatarFallback>HC</AvatarFallback>
+                      </Avatar>
+                      <div className="bg-white rounded-xl px-4 py-2 shadow text-gray-900 max-w-[70%] relative">
+                        <span className="block text-sm">Hi, this is a WhatsApp demo message for Tara Shareef. Please review the contract and let me know your thoughts.</span>
+                        <span className="flex items-center gap-1 text-xs text-gray-400 mt-1">
+                          2 mins ago
+                          <svg className="w-4 h-4 text-blue-500 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M1 12l5 5L22 4" /></svg>
+                          <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M1 16l5 5L22 8" /></svg>
+                        </span>
                       </div>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="flex items-start space-x-3">
-                        <Avatar className="h-8 w-8 mt-1">
-                          <AvatarImage src="/professional-woman-diverse.png" />
-                          <AvatarFallback>TS</AvatarFallback>
-                        </Avatar>
-                        <div className="flex-1 space-y-2">
-                          <div className="flex items-center space-x-2">
-                            <span className="text-blue-600 font-medium">@Tara Shareef</span>
-                            <span className="text-gray-600 text-sm">replied on WhatsApp</span>
-                            <ExternalLink className="h-3 w-3 text-gray-400" />
-                          </div>
-                          <div className="bg-blue-50 rounded-lg p-3">
-                            <h4 className="font-medium text-gray-900 mb-2">WhatsApp Reply</h4>
-                            <p className="text-sm text-gray-600 leading-relaxed">Thank you for the update. I will check and get back to you soon.</p>
-                          </div>
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs text-gray-500">1 min ago</span>
-                            <ChevronRight className="h-4 w-4 text-gray-400" />
-                          </div>
-                        </div>
+                    </div>
+                    {/* Receiver (right) */}
+                    <div className="flex items-end justify-end mb-2">
+                      <div className="bg-green-100 rounded-xl px-4 py-2 shadow text-gray-900 max-w-[70%] relative">
+                        <span className="block text-sm">Thank you for the update. I will check and get back to you soon.</span>
+                        <span className="flex items-center gap-1 text-xs text-gray-400 mt-1 justify-end">
+                          1 min ago
+                          <svg className="w-4 h-4 text-blue-500 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M1 12l5 5L22 4" /></svg>
+                          <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M1 16l5 5L22 8" /></svg>
+                        </span>
                       </div>
-                    </CardContent>
-                  </Card>
+                      <Avatar className="h-7 w-7 ml-2">
+                        <AvatarImage src="/professional-woman-diverse.png" />
+                        <AvatarFallback>TS</AvatarFallback>
+                      </Avatar>
+                    </div>
+                    {/* More demo messages */}
+                    <div className="flex items-end mb-2">
+                      <Avatar className="h-7 w-7 mr-2">
+                        <AvatarImage src="/professional-man.png" />
+                        <AvatarFallback>HC</AvatarFallback>
+                      </Avatar>
+                      <div className="bg-white rounded-xl px-4 py-2 shadow text-gray-900 max-w-[70%] relative">
+                        <span className="block text-sm">Did you get a chance to review the contract?</span>
+                        <span className="flex items-center gap-1 text-xs text-gray-400 mt-1">
+                          1 min ago
+                          <svg className="w-4 h-4 text-blue-500 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M1 12l5 5L22 4" /></svg>
+                          <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M1 16l5 5L22 8" /></svg>
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex items-end justify-end mb-2">
+                      <div className="bg-green-100 rounded-xl px-4 py-2 shadow text-gray-900 max-w-[70%] relative">
+                        <span className="block text-sm">Yes, I have reviewed it. Everything looks good to me.</span>
+                        <span className="flex items-center gap-1 text-xs text-gray-400 mt-1 justify-end">
+                          30 sec ago
+                          <svg className="w-4 h-4 text-blue-500 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M1 12l5 5L22 4" /></svg>
+                          <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M1 16l5 5L22 8" /></svg>
+                        </span>
+                      </div>
+                      <Avatar className="h-7 w-7 ml-2">
+                        <AvatarImage src="/professional-woman-diverse.png" />
+                        <AvatarFallback>TS</AvatarFallback>
+                      </Avatar>
+                    </div>
+                    <div className="flex items-end mb-2">
+                      <Avatar className="h-7 w-7 mr-2">
+                        <AvatarImage src="/professional-man.png" />
+                        <AvatarFallback>HC</AvatarFallback>
+                      </Avatar>
+                      <div className="bg-white rounded-xl px-4 py-2 shadow text-gray-900 max-w-[70%] relative">
+                        <span className="block text-sm">Great! Let me know if you have any questions.</span>
+                        <span className="flex items-center gap-1 text-xs text-gray-400 mt-1">
+                          10 sec ago
+                          <svg className="w-4 h-4 text-blue-500 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M1 12l5 5L22 4" /></svg>
+                          <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M1 16l5 5L22 8" /></svg>
+                        </span>
+                      </div>
+                    </div>
+                    {/* Additional demo messages for scroll */}
+                    <div className="flex items-end justify-end mb-2">
+                      <div className="bg-green-100 rounded-xl px-4 py-2 shadow text-gray-900 max-w-[70%] relative">
+                        <span className="block text-sm">Thanks, will do!</span>
+                        <span className="flex items-center gap-1 text-xs text-gray-400 mt-1 justify-end">
+                          5 sec ago
+                          <svg className="w-4 h-4 text-blue-500 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M1 12l5 5L22 4" /></svg>
+                          <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M1 16l5 5L22 8" /></svg>
+                        </span>
+                      </div>
+                      <Avatar className="h-7 w-7 ml-2">
+                        <AvatarImage src="/professional-woman-diverse.png" />
+                        <AvatarFallback>TS</AvatarFallback>
+                      </Avatar>
+                    </div>
+                    <div className="flex items-end mb-2">
+                      <Avatar className="h-7 w-7 mr-2">
+                        <AvatarImage src="/professional-man.png" />
+                        <AvatarFallback>HC</AvatarFallback>
+                      </Avatar>
+                      <div className="bg-white rounded-xl px-4 py-2 shadow text-gray-900 max-w-[70%] relative">
+                        <span className="block text-sm">👍</span>
+                        <span className="flex items-center gap-1 text-xs text-gray-400 mt-1">
+                          just now
+                          <svg className="w-4 h-4 text-blue-500 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M1 12l5 5L22 4" /></svg>
+                          <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M1 16l5 5L22 8" /></svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </TabsContent>
               <TabsContent value="email" className="mt-6">
