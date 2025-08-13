@@ -178,37 +178,166 @@ export function ContactDetailModal({ isOpen, onCloseAction, contactName, forceNo
                 </div>
               </TabsContent>
               <TabsContent value="whatsapp" className="mt-6">
-                <div className="text-center py-8 text-gray-500">No WhatsApp messages found</div>
+                <div className="space-y-6">
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="flex items-start space-x-3">
+                        <Avatar className="h-8 w-8 mt-1">
+                          <AvatarImage src="/professional-man.png" />
+                          <AvatarFallback>HC</AvatarFallback>
+                        </Avatar>
+                        <div className="flex-1 space-y-2">
+                          <div className="flex items-center space-x-2">
+                            <span className="text-green-600 font-medium">@Hitesh Chaudhary</span>
+                            <span className="text-gray-600 text-sm">sent a WhatsApp message</span>
+                            <ExternalLink className="h-3 w-3 text-gray-400" />
+                          </div>
+                          <div className="bg-green-50 rounded-lg p-3">
+                            <h4 className="font-medium text-gray-900 mb-2">WhatsApp Demo Message</h4>
+                            <p className="text-sm text-gray-600 leading-relaxed">Hi, this is a WhatsApp demo message for Tara Shareef. Please review the contract and let me know your thoughts.</p>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-gray-500">2 mins ago</span>
+                            <ChevronRight className="h-4 w-4 text-gray-400" />
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="flex items-start space-x-3">
+                        <Avatar className="h-8 w-8 mt-1">
+                          <AvatarImage src="/professional-woman-diverse.png" />
+                          <AvatarFallback>TS</AvatarFallback>
+                        </Avatar>
+                        <div className="flex-1 space-y-2">
+                          <div className="flex items-center space-x-2">
+                            <span className="text-blue-600 font-medium">@Tara Shareef</span>
+                            <span className="text-gray-600 text-sm">replied on WhatsApp</span>
+                            <ExternalLink className="h-3 w-3 text-gray-400" />
+                          </div>
+                          <div className="bg-blue-50 rounded-lg p-3">
+                            <h4 className="font-medium text-gray-900 mb-2">WhatsApp Reply</h4>
+                            <p className="text-sm text-gray-600 leading-relaxed">Thank you for the update. I will check and get back to you soon.</p>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-gray-500">1 min ago</span>
+                            <ChevronRight className="h-4 w-4 text-gray-400" />
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </TabsContent>
               <TabsContent value="email" className="mt-6">
                 <div className="space-y-6">
-                  {timelineData.map((item) => (
-                    <Card key={item.id}>
-                      <CardContent className="p-4">
-                        <div className="flex items-start space-x-3">
-                          <Avatar className="h-8 w-8 mt-1">
-                            <AvatarImage src={item.avatar || "/placeholder.svg"} />
-                            <AvatarFallback>HC</AvatarFallback>
-                          </Avatar>
-                          <div className="flex-1 space-y-2">
-                            <div className="flex items-center space-x-2">
-                              <span className="text-blue-600 font-medium">{item.sender}</span>
-                              <span className="text-gray-600 text-sm">{item.action}</span>
-                              <ExternalLink className="h-3 w-3 text-gray-400" />
-                            </div>
-                            <div className="bg-gray-50 rounded-lg p-3">
-                              <h4 className="font-medium text-gray-900 mb-2">{item.subject}</h4>
-                              <p className="text-sm text-gray-600 leading-relaxed">{item.content}</p>
-                            </div>
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="flex items-start space-x-3">
+                        <Avatar className="h-8 w-8 mt-1">
+                          <AvatarImage src="/professional-man.png" />
+                          <AvatarFallback>HC</AvatarFallback>
+                        </Avatar>
+                        <div className="flex-1 space-y-2">
+                          <div className="flex items-center space-x-2">
+                            <span className="text-blue-600 font-medium">@Hitesh Chaudhary</span>
+                            <span className="text-gray-600 text-sm">sent an Email</span>
+                            <ExternalLink className="h-3 w-3 text-gray-400" />
+                          </div>
+                          <div className="bg-gray-50 rounded-lg p-3">
+                            <h4 className="font-medium text-gray-900 mb-2">Regarding contract update</h4>
+                            <p className="text-sm text-gray-600 leading-relaxed">This is a demo email message for Tara Shareef. Please review the attached document and let us know if you have any questions.</p>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-gray-500">5 mins ago</span>
+                            <ChevronRight className="h-4 w-4 text-gray-400" />
                           </div>
                         </div>
-                      </CardContent>
-                    </Card>
-                  ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="flex items-start space-x-3">
+                        <Avatar className="h-8 w-8 mt-1">
+                          <AvatarImage src="/professional-woman-diverse.png" />
+                          <AvatarFallback>TS</AvatarFallback>
+                        </Avatar>
+                        <div className="flex-1 space-y-2">
+                          <div className="flex items-center space-x-2">
+                            <span className="text-green-600 font-medium">@Tara Shareef</span>
+                            <span className="text-gray-600 text-sm">replied via Email</span>
+                            <ExternalLink className="h-3 w-3 text-gray-400" />
+                          </div>
+                          <div className="bg-green-50 rounded-lg p-3">
+                            <h4 className="font-medium text-gray-900 mb-2">Re: Regarding contract update</h4>
+                            <p className="text-sm text-gray-600 leading-relaxed">Thank you for the email. I have received the document and will review it by tomorrow.</p>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-gray-500">3 mins ago</span>
+                            <ChevronRight className="h-4 w-4 text-gray-400" />
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
               </TabsContent>
               <TabsContent value="calls" className="mt-6">
-                <div className="text-center py-8 text-gray-500">No call logs found</div>
+                <div className="space-y-6">
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="flex items-start space-x-3">
+                        <Avatar className="h-8 w-8 mt-1">
+                          <AvatarImage src="/professional-man.png" />
+                          <AvatarFallback>HC</AvatarFallback>
+                        </Avatar>
+                        <div className="flex-1 space-y-2">
+                          <div className="flex items-center space-x-2">
+                            <span className="text-blue-600 font-medium">@Hitesh Chaudhary</span>
+                            <span className="text-gray-600 text-sm">made a call</span>
+                            <ExternalLink className="h-3 w-3 text-gray-400" />
+                          </div>
+                          <div className="bg-blue-50 rounded-lg p-3">
+                            <h4 className="font-medium text-gray-900 mb-2">Call Log</h4>
+                            <p className="text-sm text-gray-600 leading-relaxed">This is a demo call log for Tara Shareef. The call lasted 12 minutes and covered project updates.</p>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-gray-500">10 mins ago</span>
+                            <ChevronRight className="h-4 w-4 text-gray-400" />
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardContent className="p-4">
+                      <div className="flex items-start space-x-3">
+                        <Avatar className="h-8 w-8 mt-1">
+                          <AvatarImage src="/professional-woman-diverse.png" />
+                          <AvatarFallback>TS</AvatarFallback>
+                        </Avatar>
+                        <div className="flex-1 space-y-2">
+                          <div className="flex items-center space-x-2">
+                            <span className="text-green-600 font-medium">@Tara Shareef</span>
+                            <span className="text-gray-600 text-sm">received a call</span>
+                            <ExternalLink className="h-3 w-3 text-gray-400" />
+                          </div>
+                          <div className="bg-green-50 rounded-lg p-3">
+                            <h4 className="font-medium text-gray-900 mb-2">Call Log</h4>
+                            <p className="text-sm text-gray-600 leading-relaxed">This is a demo call log for Tara Shareef. The call lasted 8 minutes and covered contract details.</p>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-gray-500">7 mins ago</span>
+                            <ChevronRight className="h-4 w-4 text-gray-400" />
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </TabsContent>
             </Tabs>
           </div>

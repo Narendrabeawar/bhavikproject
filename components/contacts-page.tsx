@@ -9,17 +9,17 @@ import { Search, Plus, Users } from "lucide-react"
 
 interface ContactsPageProps {
   currentPage: string
-  onNavigate: (page: string) => void
+  onNavigateAction: (page: string) => void
 }
 
-export function ContactsPage({ currentPage, onNavigate }: ContactsPageProps) {
+export function ContactsPage({ currentPage, onNavigateAction }: ContactsPageProps) {
   const [searchQuery, setSearchQuery] = useState("")
 
   return (
     <div className="flex h-screen bg-gray-50">
-      <Sidebar currentPage={currentPage} onNavigate={onNavigate} />
+  <Sidebar currentPage={currentPage} onNavigateAction={onNavigateAction} />
       <main className="flex-1 overflow-hidden">
-        <div className="h-full flex flex-col">
+  <div className="h-full flex flex-col px-2 sm:px-4 md:px-6 lg:px-8">
           {/* Header */}
           <div className="bg-white border-b px-6 py-4">
             <div className="flex items-center justify-between">

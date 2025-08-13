@@ -32,12 +32,12 @@ interface User {
 
 interface UsersPageProps {
   currentPage: string
-  onNavigate: (page: string) => void
+  onNavigateAction: (page: string) => void
 }
 
 const columnHelper = createColumnHelper<User>()
 
-export function UsersPage({ currentPage, onNavigate }: UsersPageProps) {
+export function UsersPage({ currentPage, onNavigateAction }: UsersPageProps) {
   const [globalFilter, setGlobalFilter] = useState("")
   const [selectedContact, setSelectedContact] = useState<string | null>(null)
 
@@ -338,7 +338,7 @@ export function UsersPage({ currentPage, onNavigate }: UsersPageProps) {
 
   return (
     <div className="flex h-screen bg-gray-50">
-      <Sidebar currentPage={currentPage} onNavigate={onNavigate} />
+  <Sidebar currentPage={currentPage} onNavigateAction={onNavigateAction} />
 
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}

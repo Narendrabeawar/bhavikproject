@@ -23,7 +23,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 interface CompaniesPageProps {
   currentPage: string
-  onNavigate: (page: string) => void
+  onNavigateAction: (page: string) => void
 }
 
 interface Company {
@@ -90,7 +90,7 @@ const companiesData: Company[] = [
   },
 ]
 
-export function CompaniesPage({ currentPage, onNavigate }: CompaniesPageProps) {
+export function CompaniesPage({ currentPage, onNavigateAction }: CompaniesPageProps) {
   const [selectedContact, setSelectedContact] = useState<string | null>(null)
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [sorting, setSorting] = useState<SortingState>([])
@@ -292,7 +292,7 @@ export function CompaniesPage({ currentPage, onNavigate }: CompaniesPageProps) {
 
   return (
     <div className="flex h-screen bg-gray-50">
-      <Sidebar currentPage={currentPage} onNavigate={onNavigate} />
+  <Sidebar currentPage={currentPage} onNavigateAction={onNavigateAction} />
 
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
@@ -303,7 +303,7 @@ export function CompaniesPage({ currentPage, onNavigate }: CompaniesPageProps) {
                 <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center">
                   <div className="w-3 h-3 bg-white rounded-sm"></div>
                 </div>
-                <span className="text-sm font-medium text-blue-600">Companies</span>
+                  <span className="text-sm font-medium text-blue-600">Companies</span>
               </div>
               <div className="w-px h-6 bg-gray-300"></div>
               <div className="flex items-center space-x-1">
@@ -317,7 +317,7 @@ export function CompaniesPage({ currentPage, onNavigate }: CompaniesPageProps) {
 
         {/* Main Content */}
         <div className="flex-1 overflow-auto p-6">
-          <div className="max-w-7xl mx-auto">
+          <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8 4xl:px-16">
             <h1 className="text-2xl font-semibold text-gray-900 mb-6">Companies</h1>
 
             {/* Search and Actions */}
@@ -448,7 +448,7 @@ export function CompaniesPage({ currentPage, onNavigate }: CompaniesPageProps) {
 
       <ContactDetailModal
         isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
+    onCloseAction={() => setIsContactModalOpen(false)}
         contactName={selectedContact || ""}
       />
     </div>

@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 import { Sidebar } from "./sidebar"
+import { useEffect } from "react"
+import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -9,10 +11,11 @@ import { Search, Plus, Edit2, Trash2, SettingsIcon, FileText, Database, Shield, 
 
 interface SettingsPageProps {
   currentPage: string
-  onNavigate: (page: string) => void
+  onNavigateAction: (page: string) => void
 }
 
-export function SettingsPage({ currentPage, onNavigate }: SettingsPageProps) {
+export function SettingsPage({ currentPage, onNavigateAction }: SettingsPageProps) {
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("Templates")
   const [activeSubSection, setActiveSubSection] = useState("WhatsApp")
   const [searchQuery, setSearchQuery] = useState("")
@@ -419,19 +422,83 @@ export function SettingsPage({ currentPage, onNavigate }: SettingsPageProps) {
 
   return (
     <div className="flex h-screen bg-gray-50">
-      <Sidebar currentPage={currentPage} onNavigate={onNavigate} />
+      {/* Mobile menu button */}
+      <div className="absolute top-4 left-4 z-30 md:hidden">
+        <Button variant="ghost" size="icon" onClick={() => setMobileSidebarOpen(true)}>
+          <Menu className="w-6 h-6" />
+        </Button>
+      </div>
 
-      {/* Settings Sidebar */}
-      <div className="w-80 bg-white border-r border-gray-200 flex flex-col">
+      {/* Mobile Drawer Sidebar */}
+      {mobileSidebarOpen && (
+        <div className="fixed inset-0 z-40 flex md:hidden">
+          {/* Overlay */}
+          <div className="fixed inset-0 bg-black/30" onClick={() => setMobileSidebarOpen(false)} />
+          {/* Drawer */}
+          <div className="relative w-72 max-w-full h-full bg-white shadow-xl flex flex-col">
+            <div className="p-6 border-b border-gray-200 flex items-center justify-between">
+              <h2 className="text-lg font-semibold text-gray-900">Settings</h2>
+              <Button variant="ghost" size="sm" onClick={() => setMobileSidebarOpen(false)}>
+                <X className="w-4 h-4" />
+              </Button>
+            </div>
+            <div className="flex-1 overflow-y-auto">
+              <div className="p-4 space-y-2">
+                {sidebarItems.map((item) => (
+                  <div key={item.label}>
+                    <button
+                      onClick={() => {
+                        setActiveSection(item.label)
+                        if (item.subItems.length > 0) {
+                          setActiveSubSection(item.subItems[0].value)
+                        }
+                        setMobileSidebarOpen(false)
+                      }}
+                      className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                        activeSection === item.label ? "bg-blue-50 text-blue-700" : "text-gray-700 hover:bg-gray-100"
+                      }`}
+                    >
+                      <item.icon className="w-4 h-4 mr-3" />
+                      {item.label}
+                    </button>
+                    {item.subItems.length > 0 && activeSection === item.label && (
+                      <div className="ml-7 mt-2 space-y-1">
+                        {item.subItems.map((subItem) => (
+                          <button
+                            key={subItem.value}
+                            onClick={() => {
+                              setActiveSubSection(subItem.value)
+                              setMobileSidebarOpen(false)
+                            }}
+                            className={`w-full text-left px-3 py-1 text-sm rounded-md transition-colors ${
+                              activeSubSection === subItem.value
+                                ? "bg-blue-100 text-blue-700 font-medium"
+                                : "text-gray-600 hover:bg-gray-50"
+                            }`}
+                          >
+                            {subItem.label}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Desktop Sidebar */}
+      <div className="hidden md:flex w-80 bg-white border-r border-gray-200 flex-col">
         <div className="p-6 border-b border-gray-200">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold text-gray-900">Settings</h2>
-            <Button variant="ghost" size="sm" onClick={() => onNavigate("Dashboard")}>
+            <Button variant="ghost" size="sm" onClick={() => onNavigateAction("Dashboard")}> 
               <X className="w-4 h-4" />
             </Button>
           </div>
         </div>
-
         <div className="flex-1 overflow-y-auto">
           <div className="p-4 space-y-2">
             {sidebarItems.map((item) => (
@@ -450,7 +517,6 @@ export function SettingsPage({ currentPage, onNavigate }: SettingsPageProps) {
                   <item.icon className="w-4 h-4 mr-3" />
                   {item.label}
                 </button>
-
                 {item.subItems.length > 0 && activeSection === item.label && (
                   <div className="ml-7 mt-2 space-y-1">
                     {item.subItems.map((subItem) => (
@@ -477,7 +543,6 @@ export function SettingsPage({ currentPage, onNavigate }: SettingsPageProps) {
       {/* Main Content */}
       <div className="flex-1 overflow-y-auto">
         <div className="p-8">
-          {/* Breadcrumb */}
           <div className="flex items-center space-x-2 text-sm text-gray-500 mb-6">
             <SettingsIcon className="w-4 h-4" />
             <span>{activeSection}</span>

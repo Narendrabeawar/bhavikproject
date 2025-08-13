@@ -20,22 +20,22 @@ export default function Home() {
   const renderCurrentPage = () => {
     switch (currentPage) {
       case "Contacts":
-        return <ContactsPage currentPage={currentPage} onNavigate={handleNavigate} />
+  return <ContactsPage currentPage={currentPage} onNavigateAction={handleNavigate} />
       case "Review Leads":
-        return <ReviewLeadsPage currentPage={currentPage} onNavigate={handleNavigate} />
+  return <ReviewLeadsPage currentPage={currentPage} onNavigateAction={handleNavigate} />
       case "Activities":
-        return <ActivitiesPage currentPage={currentPage} onNavigate={handleNavigate} />
+  return <ActivitiesPage currentPage={currentPage} onNavigateAction={handleNavigate} />
       case "Companies":
-        return <CompaniesPage currentPage={currentPage} onNavigate={handleNavigate} />
+  return <CompaniesPage currentPage={currentPage} onNavigateAction={handleNavigate} />
       case "Users":
-        return <UsersPage currentPage={currentPage} onNavigate={handleNavigate} />
+  return <UsersPage currentPage={currentPage} onNavigateAction={handleNavigate} />
       case "Campaigns":
-        return <CampaignsPage currentPage={currentPage} onNavigate={handleNavigate} />
+  return <CampaignsPage currentPage={currentPage} onNavigateAction={handleNavigate} />
       case "Settings":
-        return <SettingsPage currentPage={currentPage} onNavigate={handleNavigate} />
+  return <SettingsPage currentPage={currentPage} onNavigateAction={handleNavigate} />
       case "Dashboard":
       default:
-        return <DashboardPage currentPage={currentPage} onNavigate={handleNavigate} />
+  return <DashboardPage currentPage={currentPage} onNavigateAction={handleNavigate} />
     }
   }
 

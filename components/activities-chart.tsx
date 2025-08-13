@@ -1,6 +1,6 @@
 "use client"
 
-import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, Tooltip, CartesianGrid, Legend, defs, linearGradient, stop } from "recharts"
+import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, Tooltip, CartesianGrid, Legend } from "recharts"
 
 const data = [
   { name: "Jan", value: 120 },
@@ -19,7 +19,7 @@ const data = [
 
 export function ActivitiesChart() {
   return (
-    <div className="h-64 w-full">
+    <div className="w-full h-full">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 10 }}>
           <defs>

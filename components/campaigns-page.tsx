@@ -30,50 +30,50 @@ interface Campaign {
 const campaignsData: Campaign[] = [
   {
     id: "1",
-    title: "Lorem ipsum dolor lorem ipsum dolor",
+    title: "Summer Sale Campaign",
     status: "Sent",
-    recipients: 4047,
-    delivered: "98.6%",
+    recipients: 2500,
+    delivered: "97.2%",
     createdAt: "12-08-25",
   },
   {
     id: "2",
-    title: "Lorem ipsum dolor lorem ipsum dolor",
+    title: "New Product Launch",
     status: "Sent",
-    recipients: 4047,
-    delivered: "98.6%",
+    recipients: 1800,
+    delivered: "95.8%",
     createdAt: "12-08-25",
   },
   {
     id: "3",
-    title: "Lorem ipsum dolor lorem ipsum dolor",
+    title: "Festival Greetings",
     status: "Draft",
-    recipients: 4047,
-    delivered: "98.6%",
+    recipients: 3200,
+    delivered: "-",
     createdAt: "12-08-25",
   },
   {
     id: "4",
-    title: "Lorem ipsum dolor lorem ipsum dolor",
+    title: "Feedback Request",
     status: "Draft",
-    recipients: 4047,
-    delivered: "98.6%",
+    recipients: 1500,
+    delivered: "-",
     createdAt: "12-08-25",
   },
   {
     id: "5",
-    title: "Lorem ipsum dolor lorem ipsum dolor",
+    title: "Year End Offers",
     status: "Draft",
-    recipients: 4047,
-    delivered: "98.6%",
+    recipients: 2100,
+    delivered: "-",
     createdAt: "12-08-25",
   },
   {
     id: "6",
-    title: "Lorem ipsum dolor lorem ipsum dolor",
+    title: "Webinar Reminder",
     status: "Scheduled",
-    recipients: 4047,
-    delivered: "98.6%",
+    recipients: 900,
+    delivered: "-",
     createdAt: "12-08-25",
   },
   {
@@ -130,13 +130,21 @@ const columnHelper = createColumnHelper<Campaign>()
 
 interface CampaignsPageProps {
   currentPage: string
-  onNavigate: (page: string) => void
+  onNavigateAction: (page: string) => void
 }
 
-export function CampaignsPage({ currentPage, onNavigate }: CampaignsPageProps) {
+export function CampaignsPage({ currentPage, onNavigateAction }: CampaignsPageProps) {
   const [globalFilter, setGlobalFilter] = useState("")
-  const [activeTab, setActiveTab] = useState("WhatsApp")
+  const [activeTab, setActiveTab] = useState("Email") // Email tab active by default
   const [rowSelection, setRowSelection] = useState({})
+
+  // Filter campaigns by tab (for demo, WhatsApp = Sent, Email = Draft, Scheduled = Scheduled)
+  const filteredCampaigns = useMemo(() => {
+    if (activeTab === "WhatsApp") return campaignsData.filter(c => c.status === "Sent")
+    if (activeTab === "Email") return campaignsData.filter(c => c.status === "Draft")
+    if (activeTab === "Scheduled") return campaignsData.filter(c => c.status === "Scheduled")
+    return campaignsData
+  }, [activeTab])
 
   const columns = useMemo(
     () => [
@@ -192,7 +200,7 @@ export function CampaignsPage({ currentPage, onNavigate }: CampaignsPageProps) {
   )
 
   const table = useReactTable({
-    data: campaignsData,
+    data: filteredCampaigns,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -214,7 +222,7 @@ export function CampaignsPage({ currentPage, onNavigate }: CampaignsPageProps) {
 
   return (
     <div className="flex h-screen bg-gray-50">
-      <Sidebar currentPage={currentPage} onNavigate={onNavigate} />
+  <Sidebar currentPage={currentPage} onNavigateAction={onNavigateAction} />
 
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}

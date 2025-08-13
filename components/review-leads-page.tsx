@@ -23,7 +23,7 @@ import { ContactDetailModal } from "@/components/contact-detail-modal"
 
 interface ReviewLeadsPageProps {
   currentPage: string
-  onNavigate: (page: string) => void
+  onNavigateAction: (page: string) => void
 }
 
 interface Lead {
@@ -78,7 +78,7 @@ const leadsData: Lead[] = [
   },
 ]
 
-export function ReviewLeadsPage({ currentPage, onNavigate }: ReviewLeadsPageProps) {
+export function ReviewLeadsPage({ currentPage, onNavigateAction }: ReviewLeadsPageProps) {
   const [activeTab, setActiveTab] = useState("Companies")
   const [selectedContact, setSelectedContact] = useState<any>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -308,7 +308,7 @@ export function ReviewLeadsPage({ currentPage, onNavigate }: ReviewLeadsPageProp
 
   return (
     <div className="flex h-screen bg-gray-50">
-      <Sidebar currentPage={currentPage} onNavigate={onNavigate} />
+  <Sidebar currentPage={currentPage} onNavigateAction={onNavigateAction} />
 
       <div className="flex-1 flex flex-col">
         {/* Header */}
@@ -479,7 +479,7 @@ export function ReviewLeadsPage({ currentPage, onNavigate }: ReviewLeadsPageProp
       </div>
 
       {/* Contact Detail Modal */}
-      <ContactDetailModal contact={selectedContact} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+  <ContactDetailModal contactName={selectedContact} isOpen={isModalOpen} onCloseAction={() => setIsModalOpen(false)} />
     </div>
   )
 }

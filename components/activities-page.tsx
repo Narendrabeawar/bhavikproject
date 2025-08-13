@@ -8,7 +8,7 @@ import { ContactDetailModal } from "./contact-detail-modal"
 
 interface ActivitiesPageProps {
   currentPage: string
-  onNavigate: (page: string) => void
+  onNavigateAction: (page: string) => void
 }
 
 interface Activity {
@@ -74,7 +74,7 @@ const activities: Activity[] = [
   },
 ]
 
-export function ActivitiesPage({ currentPage, onNavigate }: ActivitiesPageProps) {
+export function ActivitiesPage({ currentPage, onNavigateAction }: ActivitiesPageProps) {
   const [selectedActivity, setSelectedActivity] = useState<Activity>(activities[0])
   const [contactModalOpen, setContactModalOpen] = useState(false)
   const [selectedContact, setSelectedContact] = useState("")
@@ -91,11 +91,10 @@ export function ActivitiesPage({ currentPage, onNavigate }: ActivitiesPageProps)
 
   return (
     <div className="flex h-screen bg-gray-50">
-      <Sidebar currentPage={currentPage} onNavigate={onNavigate} />
+  <Sidebar currentPage={currentPage} onNavigateAction={onNavigateAction} />
 
       <div className="flex-1 flex">
-        {/* Left Column - My Work */}
-        <div className="w-1/3 p-6 border-r border-gray-200">
+        <div className="w-full sm:w-1/3 p-6 border-r border-gray-200">
           <div className="mb-6">
             <h1 className="text-2xl font-semibold text-gray-900 mb-2">My Work</h1>
           </div>
@@ -318,7 +317,7 @@ export function ActivitiesPage({ currentPage, onNavigate }: ActivitiesPageProps)
 
       <ContactDetailModal
         isOpen={contactModalOpen}
-        onClose={() => setContactModalOpen(false)}
+        onCloseAction={() => setContactModalOpen(false)}
         contactName={selectedContact}
       />
     </div>
